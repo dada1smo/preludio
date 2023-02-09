@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['var(--font-space-grotesk)', 'var(--font-space-mono)'],
+      sans: ['var(--font-space-grotesk)'],
+      mono: ['var(--font-space-mono)'],
     },
   },
   plugins: [],
