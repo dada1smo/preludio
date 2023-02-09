@@ -19,6 +19,17 @@ type VariantCollection = {
   [key in ButtonVariant]: string;
 };
 
+const buttonVariants: VariantCollection = {
+  basic: `bg-white hover:bg-main-50 text-main-800 border-2 border-transparent hover:border-main-50`,
+  main: `bg-main-900 hover:bg-main-700 text-white border-2 border-main-900 hover:border-main-700`,
+  alt: `bg-alt-600 hover:bg-alt-700 text-white border-2 border-alt-600 hover:border-alt-700`,
+  main_reversed: `bg-transparent hover:text-main-500 text-main-800 border-2 border-main-900 hover:border-main-500`,
+  alt_reversed: `bg-transparent hover:text-alt-700 text-alt-600 border-2 border-alt-600 hover:border-alt-700`,
+  success: '',
+  danger: '',
+  caution: '',
+};
+
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 type SizeCollection = {
@@ -47,8 +58,6 @@ interface ButtonProps {
 export const ButtonTransition = 'transition duration-300';
 export const ButtonBase = `font-sans inline-flex items-center justify-center ${ButtonTransition}`;
 
-const buttonVariants: VariantCollection = generateColors('slate', 'amber');
-
 const buttonSizes: SizeCollection = {
   sm: 'py-1 px-3 text-sm',
   md: 'py-3 px-6 text-base',
@@ -61,19 +70,6 @@ const buttonShapes: ShapeCollection = {
   circle: 'rounded-full !p-2 h-12 w-12',
   compact: '!px-2 !py-1 !border-0 !background-transparent',
 };
-
-function generateColors(main: string, alternate: string) {
-  return {
-    basic: `bg-white hover:bg-${main}-50 text-${main}-800 border-2 border-transparent hover:border-${main}-50`,
-    main: `bg-${main}-900 hover:bg-${main}-700 text-white border-2 border-${main}-900 hover:border-${main}-700`,
-    alt: `bg-${alternate}-600 hover:bg-${alternate}-700 text-white border-2 border-${alternate}-600 hover:border-${alternate}-700`,
-    main_reversed: `bg-transparent hover:text-${main}-500 text-${main}-800 border-2 border-${main}-900 hover:border-${main}-500`,
-    alt_reversed: `bg-transparent hover:text-${alternate}-700 text-${alternate}-600 border-2 border-${alternate}-600 hover:border-${alternate}-700`,
-    success: '',
-    danger: '',
-    caution: '',
-  };
-}
 
 const Button: FunctionComponent<ButtonProps> = ({
   label,

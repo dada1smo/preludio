@@ -4,7 +4,7 @@
 
 @layer base {
     h1, h2, h3, h4, h5, h6, p {
-        @apply text-slate-800;
+        @apply text-main-800;
     }
 
     * {
@@ -12,6 +12,6 @@
     }
 
     body {
-        @apply bg-amber-50;
+        @apply bg-alt-50;
     }
 }
