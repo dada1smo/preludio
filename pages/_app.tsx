@@ -19,9 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
       <Header />
-      <div className="container mx-auto">
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </main>
   );
 }

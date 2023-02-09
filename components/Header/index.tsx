@@ -10,7 +10,7 @@ const Header: FunctionComponent = () => {
           <Button label="Sobre" variant="alt_reversed" shape="compact" />
         </li>
         <li>
-          <Button label="Clique aqui" link={{ href: '/' }} variant="main" />
+          <Button label="Assinar" link={{ href: '/' }} variant="alt" />
         </li>
       </ul>
     </div>
