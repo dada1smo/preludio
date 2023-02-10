@@ -1,0 +1,31 @@
+{
+  "_cts": {
+    "pagina_inicial": {},
+    "home": {},
+    "menu": {}
+  },
+  "slices": {
+    "PaginaInicial": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "HeroSection": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Hero": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "MenuNavigation": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    }
+  }
+}

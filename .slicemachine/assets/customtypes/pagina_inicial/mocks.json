@@ -1,0 +1,59 @@
+{
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "widely",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "hero_section$c8083084-a09b-40f1-97cc-d95debb0d136",
+        "name": "hero_section",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "FieldContent",
+              "value": "try",
+              "type": "Text"
+            },
+            "description": {
+              "__TYPE__": "FieldContent",
+              "value": "continent",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      },
+      {
+        "key": "hero$38566486-6185-4994-adf8-af26b5b05344",
+        "name": "hero",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "test": {
+              "__TYPE__": "FieldContent",
+              "value": "standard",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

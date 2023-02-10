@@ -1,19 +1,31 @@
-import { FunctionComponent } from 'react';
-import Button from '../Button';
+import { MenuDocument } from '@/.slicemachine/prismicio';
+import { createClient } from '@/prismicio';
+import { components } from '@/slices';
+import { SliceZone } from '@prismicio/react';
+import { FunctionComponent, useEffect, useState } from 'react';
 
 const Header: FunctionComponent = () => {
+  const [menu, setMenu] = useState<MenuDocument | null>(null);
+
+  const getMenu = async () => {
+    const client = createClient();
+
+    const slice = await client.getSingle('menu');
+
+    if (slice) {
+      setMenu(slice);
+    }
+  };
+
+  useEffect(() => {
+    getMenu();
+  }, []);
+
   return (
-    <div className="w-full h-20 flex items-center justify-between bg-white px-4 py-2 shadow-lg shadow-alt-300/20">
+    <header className="w-full h-20 flex items-center justify-between bg-white px-4 py-2 shadow-lg shadow-alt-300/20">
       <div>Header</div>
-      <ul className="flex items-center gap-4">
-        <li>
-          <Button label="Sobre" variant="alt_reversed" shape="compact" />
-        </li>
-        <li>
-          <Button label="Assinar" link={{ href: '/' }} variant="alt" />
-        </li>
-      </ul>
-    </div>
+      {menu && <SliceZone slices={menu.data.slices} components={components} />}
+    </header>
   );
 };
 

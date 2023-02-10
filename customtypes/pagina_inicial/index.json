@@ -1,0 +1,28 @@
+{
+  "id": "pagina_inicial",
+  "label": "pagina_inicial",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "hero_section": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

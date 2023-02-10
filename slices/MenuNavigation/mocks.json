@@ -1,0 +1,41 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "cta_link": {
+        "__TYPE__": "FieldContent",
+        "value": "leave",
+        "type": "Text"
+      },
+      "cta_label": {
+        "__TYPE__": "FieldContent",
+        "value": "is",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "url",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "circle",
+              "type": "Text"
+            }
+          ],
+          [
+            "label",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "tomorrow",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+]

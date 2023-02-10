@@ -1,0 +1,39 @@
+{
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "menu_navigation$ec131b41-8ff4-4f79-99e6-a3f37bbeedbd",
+        "name": "menu_navigation",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "url",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "pleasant",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "shot",
+                    "type": "Text"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

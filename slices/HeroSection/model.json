@@ -1,0 +1,47 @@
+{
+  "id": "hero_section",
+  "type": "SharedSlice",
+  "name": "HeroSection",
+  "description": "HeroSection",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "HeroSection",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Título",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Descrição",
+            "placeholder": ""
+          }
+        },
+        "cta_label": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Texto",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

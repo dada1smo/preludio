@@ -3,6 +3,10 @@ import '@/components/Icon/fontawesome.ts';
 import type { AppProps } from 'next/app';
 import { Space_Grotesk, Space_Mono } from '@next/font/google';
 import Header from '@/components/Header';
+import { PrismicProvider } from '@prismicio/react';
+import { PrismicPreview } from '@prismicio/next';
+import Link from 'next/link';
+import { repositoryName } from '../prismicio.js';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -17,9 +21,13 @@ const spaceMono = Space_Mono({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
-      <Header />
-      <Component {...pageProps} />
-    </main>
+    <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
+      <PrismicPreview repositoryName={repositoryName}>
+        <main className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
+          <Header />
+          <Component {...pageProps} />
+        </main>
+      </PrismicPreview>
+    </PrismicProvider>
   );
 }
