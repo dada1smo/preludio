@@ -1,0 +1,21 @@
+.h1,
+.h1 h1,
+.h1 h2,
+.h1 h3,
+.h1 h4,
+.h1 h5,
+.h1 h6,
+.h1 p {
+  @apply text-5xl lg:text-6xl font-bold underline font-sans lowercase;
+}
+
+.h5,
+.h5 h1,
+.h5 h2,
+.h5 h3,
+.h5 h4,
+.h5 h5,
+.h5 h6,
+.h5 p {
+  @apply text-xl lg:text-2xl font-sans text-main-600;
+}

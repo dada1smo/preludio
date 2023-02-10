@@ -3,6 +3,7 @@ import { createClient } from '@/prismicio';
 import { components } from '@/slices';
 import { SliceZone } from '@prismicio/react';
 import { FunctionComponent, useEffect, useState } from 'react';
+import Typography from '../Typography';
 
 const Header: FunctionComponent = () => {
   const [menu, setMenu] = useState<MenuDocument | null>(null);

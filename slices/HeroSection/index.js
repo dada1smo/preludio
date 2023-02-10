@@ -1,6 +1,7 @@
 import React from 'react';
 import { PrismicRichText } from '@prismicio/react';
 import Button from '@/components/Button';
+import Typography from '@/components/Typography';
 
 /**
  * @typedef {import("@prismicio/client").Content.HeroSectionSlice} HeroSectionSlice
@@ -14,12 +15,12 @@ const HeroSection = ({ slice }) => (
         <div className="h-96 bg-gradient-to-tr from-main-500 via-orange-300  to-alt-200" />
       </div>
       <div className="md:col-start-7 col-start-1 col-span-6 flex flex-col items-start justify-center gap-8">
-        <h1 className="text-5xl lg:text-6xl font-bold underline font-sans">
+        <Typography tag="h1" variant="h1">
           {slice.primary.title ? slice.primary.title : 'Título'}
-        </h1>
-        <p className="text-xl lg:text-2xl font-sans text-main-600">
+        </Typography>
+        <Typography tag="p" variant="h5">
           {slice.primary.description ? slice.primary.description : 'Descrição'}
-        </p>
+        </Typography>
         <Button
           label={slice.primary.cta_label ? slice.primary.cta_label : 'Botão'}
           variant="alt"
