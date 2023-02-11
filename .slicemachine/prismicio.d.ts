@@ -6,18 +6,6 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
-/** Content for home documents */
-type HomeDocumentData = Record<string, never>;
-/**
- * home document from Prismic
- *
- * - **API ID**: `home`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 /** Content for menu documents */
 interface MenuDocumentData {
     /**
@@ -76,7 +64,7 @@ interface PaginaInicialDocumentData {
  * Slice for *pagina_inicial → Slice Zone*
  *
  */
-type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice;
+type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsSlice;
 /**
  * pagina_inicial document from Prismic
  *
@@ -87,7 +75,101 @@ type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type PaginaInicialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PaginaInicialDocumentData>, "pagina_inicial", Lang>;
-export type AllDocumentTypes = HomeDocument | MenuDocument | PaginaInicialDocument;
+export type AllDocumentTypes = MenuDocument | PaginaInicialDocument;
+/**
+ * Item in FeatureSection → Items
+ *
+ */
+export interface FeaturesSectionsSliceDefaultItem {
+    /**
+     * Título field in *FeatureSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: features_sections.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *FeatureSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Descreva aqui o benefício
+     * - **API ID Path**: features_sections.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * image field in *FeatureSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: features_sections.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for FeatureSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `FeaturesSections`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FeaturesSectionsSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<FeaturesSectionsSliceDefaultItem>>;
+/**
+ * Item in FeatureSection → Items
+ *
+ */
+export interface FeaturesSectionsSlice4ColsItem {
+    /**
+     * Título field in *FeatureSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: features_sections.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *FeatureSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Descreva aqui o benefício
+     * - **API ID Path**: features_sections.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * 4 Colunas variation for FeatureSection Slice
+ *
+ * - **API ID**: `4Cols`
+ * - **Description**: `FeaturesSections`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FeaturesSectionsSlice4Cols = prismicT.SharedSliceVariation<"4Cols", Record<string, never>, Simplify<FeaturesSectionsSlice4ColsItem>>;
+/**
+ * Slice variation for *FeatureSection*
+ *
+ */
+type FeaturesSectionsSliceVariation = FeaturesSectionsSliceDefault | FeaturesSectionsSlice4Cols;
+/**
+ * FeatureSection Shared Slice
+ *
+ * - **API ID**: `features_sections`
+ * - **Description**: `FeaturesSections`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FeaturesSectionsSlice = prismicT.SharedSlice<"features_sections", FeaturesSectionsSliceVariation>;
 /**
  * Primary content in HeroSection → Primary
  *
@@ -237,6 +319,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomeDocumentData, HomeDocument, MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
     }
 }

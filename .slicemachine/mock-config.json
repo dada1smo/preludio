@@ -26,6 +26,13 @@
         "primary": {},
         "items": {}
       }
+    },
+    "FeaturesSections": {},
+    "FeatureSection": {
+      "default": {
+        "items": {},
+        "primary": {}
+      }
     }
   }
 }

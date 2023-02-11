@@ -1,0 +1,70 @@
+{
+  "id": "features_sections",
+  "type": "SharedSlice",
+  "name": "FeatureSection",
+  "description": "FeaturesSections",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "FeaturesSections",
+      "primary": {},
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Título",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descrição",
+            "placeholder": "Descreva aqui o benefício",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "4Cols",
+      "name": "4 Colunas",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "FeaturesSections",
+      "primary": {},
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Título",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Descrição",
+            "placeholder": "Descreva aqui o benefício",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

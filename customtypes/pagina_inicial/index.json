@@ -19,6 +19,9 @@
           "choices": {
             "hero_section": {
               "type": "SharedSlice"
+            },
+            "features_sections": {
+              "type": "SharedSlice"
             }
           }
         }

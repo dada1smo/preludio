@@ -1,14 +1,14 @@
 {
   "title": {
     "__TYPE__": "FieldContent",
-    "value": "widely",
+    "value": "shown",
     "type": "Text"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "hero_section$c8083084-a09b-40f1-97cc-d95debb0d136",
+        "key": "hero_section$463d108b-c57c-4859-be69-872511fd6fb3",
         "name": "hero_section",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -16,12 +16,22 @@
           "primary": {
             "title": {
               "__TYPE__": "FieldContent",
-              "value": "try",
+              "value": "heat",
               "type": "Text"
             },
             "description": {
               "__TYPE__": "FieldContent",
-              "value": "continent",
+              "value": "writing",
+              "type": "Text"
+            },
+            "cta_label": {
+              "__TYPE__": "FieldContent",
+              "value": "divide",
+              "type": "Text"
+            },
+            "cta_link": {
+              "__TYPE__": "FieldContent",
+              "value": "magic",
               "type": "Text"
             }
           },
@@ -34,22 +44,39 @@
         }
       },
       {
-        "key": "hero$38566486-6185-4994-adf8-af26b5b05344",
-        "name": "hero",
+        "key": "features_sections$715af083-a555-4abc-bca7-b572b37452cb",
+        "name": "features_sections",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
-          "primary": {
-            "test": {
-              "__TYPE__": "FieldContent",
-              "value": "standard",
-              "type": "Text"
-            }
-          },
+          "primary": {},
           "items": [
             {
               "__TYPE__": "GroupItemContent",
-              "value": []
+              "value": [
+                [
+                  "title",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "onto",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "description",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Nisi cillum excepteur consequat consequat sint qui voluptate cupidatat eu mollit aute ullamco exercitation dolor. Sint Lorem dolore quis voluptate. Laborum do mollit cupidatat culpa fugiat esse minim minim ullamco sit."
+                        }
+                      }
+                    ]
+                  }
+                ]
+              ]
             }
           ]
         }
