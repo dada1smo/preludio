@@ -38,6 +38,14 @@
             "label": "CTA Link",
             "placeholder": ""
           }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "image",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {},

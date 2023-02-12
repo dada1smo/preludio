@@ -2,16 +2,19 @@
 
 import FeatureSection from './FeatureSection';
 import HeroSection from './HeroSection';
+import LogoSection from './LogoSection';
 import MenuNavigation from './MenuNavigation';
 
 export {
 	FeatureSection,
 	HeroSection,
+	LogoSection,
 	MenuNavigation,
 };
 
 export const components = {
 	features_sections: FeatureSection,
 	hero_section: HeroSection,
+	logo_section: LogoSection,
 	menu_navigation: MenuNavigation,
 };

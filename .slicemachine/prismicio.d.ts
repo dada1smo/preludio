@@ -64,7 +64,7 @@ interface PaginaInicialDocumentData {
  * Slice for *pagina_inicial → Slice Zone*
  *
  */
-type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsSlice;
+type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsSlice | LogoSectionSlice;
 /**
  * pagina_inicial document from Prismic
  *
@@ -215,6 +215,16 @@ interface HeroSectionSliceDefaultPrimary {
      *
      */
     cta_link: prismicT.KeyTextField;
+    /**
+     * image field in *HeroSection → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_section.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
 }
 /**
  * Default variation for HeroSection Slice
@@ -239,6 +249,61 @@ type HeroSectionSliceVariation = HeroSectionSliceDefault;
  *
  */
 export type HeroSectionSlice = prismicT.SharedSlice<"hero_section", HeroSectionSliceVariation>;
+/**
+ * Primary content in LogoSection → Primary
+ *
+ */
+interface LogoSectionSliceDefaultPrimary {
+    /**
+     * Título field in *LogoSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: logo_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+}
+/**
+ * Item in LogoSection → Items
+ *
+ */
+export interface LogoSectionSliceDefaultItem {
+    /**
+     * Logo field in *LogoSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: logo_section.items[].logo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    logo: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for LogoSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LogoSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LogoSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<LogoSectionSliceDefaultPrimary>, Simplify<LogoSectionSliceDefaultItem>>;
+/**
+ * Slice variation for *LogoSection*
+ *
+ */
+type LogoSectionSliceVariation = LogoSectionSliceDefault;
+/**
+ * LogoSection Shared Slice
+ *
+ * - **API ID**: `logo_section`
+ * - **Description**: `LogoSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LogoSectionSlice = prismicT.SharedSlice<"logo_section", LogoSectionSliceVariation>;
 /**
  * Primary content in MenuNavigation → Primary
  *
@@ -319,6 +384,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
     }
 }

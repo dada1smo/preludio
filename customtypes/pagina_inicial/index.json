@@ -22,6 +22,9 @@
             },
             "features_sections": {
               "type": "SharedSlice"
+            },
+            "logo_section": {
+              "type": "SharedSlice"
             }
           }
         }

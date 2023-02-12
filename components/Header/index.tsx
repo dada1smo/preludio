@@ -22,10 +22,15 @@ const Header: FunctionComponent = () => {
   }, []);
 
   return (
-    <header className="w-full h-20 flex items-center justify-between bg-white px-4 py-2 shadow-lg shadow-alt-300/20">
-      <div>Header</div>
-      {menu && <SliceZone slices={menu.data.slices} components={components} />}
-    </header>
+    <>
+      <header className="w-full h-20 flex items-center justify-between bg-white px-4 py-2 shadow-lg shadow-alt-300/20 absolute">
+        <div>Header</div>
+        {menu && (
+          <SliceZone slices={menu.data.slices} components={components} />
+        )}
+      </header>
+      <div className="w-full h-20" />
+    </>
   );
 };
 

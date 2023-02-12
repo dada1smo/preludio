@@ -3,6 +3,8 @@ import { PrismicRichText } from '@prismicio/react';
 import RichText from '@/components/RichText';
 import Image from '@/components/Image';
 import Text from '@/components/Text';
+import Section from '@/components/Section';
+import Grid from '@/components/Grid';
 
 /**
  * @typedef {import("@prismicio/client").Content.FeaturesSectionsSlice} FeaturesSectionsSlice
@@ -10,11 +12,14 @@ import Text from '@/components/Text';
  * @param { FeaturesSectionsProps }
  */
 const FeaturesSections = ({ slice }) => {
-  const colSpan = slice.variation === 'default' ? 'col-span-4' : 'col-span-3';
+  const colSpan =
+    slice.variation === 'default'
+      ? 'md:col-span-4 col-span-6'
+      : 'md:col-span-3 col-span-6';
 
   return (
-    <section className="container mx-auto py-20">
-      <div className="grid md:grid-cols-12 grid-cols-6 gap-8">
+    <Section classes="bg-white">
+      <Grid>
         {slice.items.length > 0 &&
           slice.items.map(({ title, description, image }) => {
             return (
@@ -54,8 +59,8 @@ const FeaturesSections = ({ slice }) => {
               </div>
             );
           })}
-      </div>
-    </section>
+      </Grid>
+    </Section>
   );
 };
 
