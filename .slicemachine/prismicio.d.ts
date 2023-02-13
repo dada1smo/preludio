@@ -77,6 +77,32 @@ type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsS
 export type PaginaInicialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PaginaInicialDocumentData>, "pagina_inicial", Lang>;
 export type AllDocumentTypes = MenuDocument | PaginaInicialDocument;
 /**
+ * Primary content in FeatureSection → Primary
+ *
+ */
+interface FeaturesSectionsSliceDefaultPrimary {
+    /**
+     * Título field in *FeatureSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: features_sections.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Surtítulo field in *FeatureSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: features_sections.primary.surtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    surtitle: prismicT.KeyTextField;
+}
+/**
  * Item in FeatureSection → Items
  *
  */
@@ -120,7 +146,7 @@ export interface FeaturesSectionsSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type FeaturesSectionsSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<FeaturesSectionsSliceDefaultItem>>;
+export type FeaturesSectionsSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<FeaturesSectionsSliceDefaultPrimary>, Simplify<FeaturesSectionsSliceDefaultItem>>;
 /**
  * Item in FeatureSection → Items
  *
@@ -227,6 +253,32 @@ interface HeroSectionSliceDefaultPrimary {
     image: prismicT.ImageField<never>;
 }
 /**
+ * Item in HeroSection → Items
+ *
+ */
+export interface HeroSectionSliceDefaultItem {
+    /**
+     * Nome field in *HeroSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_section.items[].name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Texto field in *HeroSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: hero_section.items[].text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text: prismicT.KeyTextField;
+}
+/**
  * Default variation for HeroSection Slice
  *
  * - **API ID**: `default`
@@ -234,7 +286,7 @@ interface HeroSectionSliceDefaultPrimary {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HeroSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSectionSliceDefaultPrimary>, never>;
+export type HeroSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<HeroSectionSliceDefaultPrimary>, Simplify<HeroSectionSliceDefaultItem>>;
 /**
  * Slice variation for *HeroSection*
  *
@@ -384,6 +436,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
     }
 }

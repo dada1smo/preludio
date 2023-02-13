@@ -10,7 +10,22 @@
       "docURL": "...",
       "version": "sktwi1xtmkfgx8626",
       "description": "FeaturesSections",
-      "primary": {},
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Título",
+            "placeholder": ""
+          }
+        },
+        "surtitle": {
+          "type": "Text",
+          "config": {
+            "label": "Surtítulo",
+            "placeholder": ""
+          }
+        }
+      },
       "items": {
         "title": {
           "type": "Text",

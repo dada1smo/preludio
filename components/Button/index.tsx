@@ -4,6 +4,7 @@ import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import NextLink from 'next/link';
 import { FunctionComponent } from 'react';
+import Icon from '../Icon';
 
 type ButtonVariant =
   | 'basic'
@@ -98,7 +99,7 @@ const Button: FunctionComponent<ButtonProps> = ({
     }
 
     if (icon) {
-      return <FontAwesomeIcon icon={icon.name} className={classes} />;
+      return <Icon icon={icon.name} classes={classes} />;
     }
 
     return null;

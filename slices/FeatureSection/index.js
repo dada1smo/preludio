@@ -20,6 +20,14 @@ const FeaturesSections = ({ slice }) => {
   return (
     <Section classes="bg-white">
       <Grid>
+        <div className="col-start-1 col-span-full">
+          <Text tag="h2" variant="h6">
+            {slice.primary.surtitle}
+          </Text>
+          <Text tag="p" variant="h2" classes="mb-5">
+            {slice.primary.title}
+          </Text>
+        </div>
         {slice.items.length > 0 &&
           slice.items.map(({ title, description, image }) => {
             return (

@@ -6,10 +6,25 @@ interface ImageProps {
   alt: string;
   height: number;
   width: number;
+  priority?: boolean;
 }
 
-const Image: FunctionComponent<ImageProps> = ({ src, alt, height, width }) => {
-  return <NextImage src={src} alt={alt} height={height} width={width} />;
+const Image: FunctionComponent<ImageProps> = ({
+  src,
+  alt,
+  height,
+  width,
+  priority,
+}) => {
+  return (
+    <NextImage
+      src={src}
+      alt={alt}
+      height={height}
+      width={width}
+      priority={priority}
+    />
+  );
 };
 
 export default Image;

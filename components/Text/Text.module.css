@@ -1,11 +1,19 @@
 .h1 {
-  @apply text-5xl lg:text-6xl font-bold underline font-sans lowercase;
+  @apply text-5xl lg:text-6xl font-bold font-serif text-main-900;
+}
+
+.h2 {
+  @apply text-4xl font-bold font-serif text-alt-700;
 }
 
 .h3 {
-  @apply text-xl lg:text-3xl font-bold font-sans text-main-500;
+  @apply text-xl lg:text-2xl font-bold font-sans text-main-500;
 }
 
 .h5 {
-  @apply text-xl lg:text-2xl font-sans text-main-600;
+  @apply text-xl lg:text-xl font-sans text-main-600;
+}
+
+.h6 {
+  @apply font-sans uppercase text-alt-500 font-bold tracking-wide;
 }

@@ -12,6 +12,7 @@ module.exports = {
     extend: {},
     fontFamily: {
       sans: ['var(--font-space-grotesk)'],
+      serif: ['var(--font-biorhyme)'],
       mono: ['var(--font-space-mono)'],
     },
     colors: {
