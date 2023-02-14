@@ -4,9 +4,11 @@ import NextImage from 'next/image';
 interface ImageProps {
   src: string;
   alt: string;
-  height: number;
-  width: number;
+  height?: number;
+  width?: number;
   priority?: boolean;
+  fill?: boolean;
+  style?: object;
 }
 
 const Image: FunctionComponent<ImageProps> = ({
@@ -15,6 +17,8 @@ const Image: FunctionComponent<ImageProps> = ({
   height,
   width,
   priority,
+  fill,
+  style,
 }) => {
   return (
     <NextImage
@@ -23,6 +27,8 @@ const Image: FunctionComponent<ImageProps> = ({
       height={height}
       width={width}
       priority={priority}
+      fill={fill}
+      style={style}
     />
   );
 };

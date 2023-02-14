@@ -64,7 +64,7 @@ interface PaginaInicialDocumentData {
  * Slice for *pagina_inicial → Slice Zone*
  *
  */
-type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsSlice | LogoSectionSlice;
+type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsSlice | LogoSectionSlice | TabsSectionSlice;
 /**
  * pagina_inicial document from Prismic
  *
@@ -76,6 +76,121 @@ type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsS
  */
 export type PaginaInicialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PaginaInicialDocumentData>, "pagina_inicial", Lang>;
 export type AllDocumentTypes = MenuDocument | PaginaInicialDocument;
+/**
+ * Primary content in CarouselSection → Primary
+ *
+ */
+interface TabsSectionSliceDefaultPrimary {
+    /**
+     * Surtítulo field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.surtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    surtitle: prismicT.KeyTextField;
+    /**
+     * Título field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Item in CarouselSection → Items
+ *
+ */
+export interface TabsSectionSliceDefaultItem {
+    /**
+     * Título field in *CarouselSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *CarouselSection → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.items[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Imagem field in *CarouselSection → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.items[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * CTA Texto field in *CarouselSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.items[].cta_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *CarouselSection → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.items[].cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_link: prismicT.KeyTextField;
+}
+/**
+ * Default variation for CarouselSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TabsSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TabsSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TabsSectionSliceDefaultPrimary>, Simplify<TabsSectionSliceDefaultItem>>;
+/**
+ * Slice variation for *CarouselSection*
+ *
+ */
+type TabsSectionSliceVariation = TabsSectionSliceDefault;
+/**
+ * CarouselSection Shared Slice
+ *
+ * - **API ID**: `tabs_section`
+ * - **Description**: `TabsSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TabsSectionSlice = prismicT.SharedSlice<"tabs_section", TabsSectionSliceVariation>;
 /**
  * Primary content in FeatureSection → Primary
  *
@@ -436,6 +551,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, TabsSectionSliceDefaultPrimary, TabsSectionSliceDefaultItem, TabsSectionSliceDefault, TabsSectionSliceVariation, TabsSectionSlice, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
     }
 }

@@ -18,7 +18,7 @@ const FeaturesSections = ({ slice }) => {
       : 'md:col-span-3 col-span-6';
 
   return (
-    <Section classes="bg-white">
+    <Section classes="bg-gradient-to-br from-white via-white to-main-100">
       <Grid>
         <div className="col-start-1 col-span-full">
           <Text tag="h2" variant="h6">

@@ -25,6 +25,9 @@
             },
             "logo_section": {
               "type": "SharedSlice"
+            },
+            "tabs_section": {
+              "type": "SharedSlice"
             }
           }
         }

@@ -54,6 +54,7 @@ interface ButtonProps {
     name: IconProp;
     position: 'before' | 'after' | 'center';
   };
+  onClick?: Function;
 }
 
 export const ButtonTransition = 'transition duration-300';
@@ -67,7 +68,7 @@ const buttonSizes: SizeCollection = {
 
 const buttonShapes: ShapeCollection = {
   regular: 'rounded-full',
-  circle_sm: 'rounded-full !p-1 h-10 w-10',
+  circle_sm: 'rounded-full !p-1 h-6 w-6',
   circle: 'rounded-full !p-2 h-12 w-12',
   compact: '!px-2 !py-1 !border-0 !background-transparent',
 };
@@ -79,6 +80,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   size = 'md',
   shape = 'regular',
   icon,
+  onClick,
 }) => {
   const buttonClasses = `${ButtonBase} ${
     buttonVariants[variant as keyof VariantCollection]
@@ -114,7 +116,10 @@ const Button: FunctionComponent<ButtonProps> = ({
       {icon && icon.position === 'after' && iconComponent(icon.position)}
     </NextLink>
   ) : (
-    <button className={buttonClasses}>
+    <button
+      className={buttonClasses}
+      onClick={onClick ? () => onClick() : () => null}
+    >
       {icon && icon.position === 'before' && iconComponent(icon.position)}
       {icon && icon.position === 'center'
         ? iconComponent(icon.position)

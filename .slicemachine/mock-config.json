@@ -39,6 +39,18 @@
         "primary": {},
         "items": {}
       }
+    },
+    "TabsSection": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "CarouselSection": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
     }
   }
 }
