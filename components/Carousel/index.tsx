@@ -1,8 +1,9 @@
-import { FunctionComponent, ReactNode, useState } from 'react';
+import { FunctionComponent, ReactNode, useEffect, useState } from 'react';
 import * as RadixTabs from '@radix-ui/react-tabs';
-import styles from './Tabs.module.css';
+import styles from './Carousel.module.css';
 import Button from '../Button';
 import Text, { TextVariant } from '../Text';
+import useWindowSize from '@/hooks/use-window-size';
 
 interface SlideProps {
   title: string;
@@ -20,39 +21,51 @@ interface CarouselProps {
 }
 
 const Carousel: FunctionComponent<CarouselProps> = ({ items, title }) => {
-  const [current, setCurrent] = useState<string>('t1');
+  const [current, setCurrent] = useState<string>('s1');
 
   const slides = items.map((i, index) => {
     return {
       title: i.title,
       content: i.content,
-      id: `t${index + 1}`,
+      id: `s${index + 1}`,
     };
   });
 
   function previous() {
     const n = parseInt(current.split('')[1].toString());
     if (n > 1) {
-      setCurrent(`t${n - 1}`);
+      setCurrent(`s${n - 1}`);
     }
   }
 
   function next() {
     const n = parseInt(current.split('')[1].toString());
     if (n < slides.length) {
-      setCurrent(`t${n + 1}`);
+      setCurrent(`s${n + 1}`);
     }
   }
 
+  function slide() {
+    const n = parseInt(current.split('')[1].toString()) - 1;
+    if (n === 0) {
+      return 'translateX(var(--slide-start))';
+    }
+
+    return `translateX(calc(var(--slide-start) - var(--slide-move) * ${n}))`;
+  }
+
   return (
-    <RadixTabs.Root value={current} className="overflow-hidden">
-      <div className="flex justify-between mb-8">
+    <RadixTabs.Root
+      value={current}
+      className={`md:overflow-hidden overflow-auto ${styles.root} relative`}
+    >
+      <div className="flex justify-between mb-8 md:relative sticky left-0">
         {title && (
           <Text tag={title.tag} variant={title.variant} classes={title.classes}>
             {title.text}
           </Text>
         )}
-        <RadixTabs.List className="flex gap-4 items-center justify-center">
+        <RadixTabs.List className="md:flex hidden gap-4 items-center justify-center">
           <Button
             label=""
             size="sm"
@@ -82,14 +95,18 @@ const Carousel: FunctionComponent<CarouselProps> = ({ items, title }) => {
         </RadixTabs.List>
       </div>
       <div
-        className={`flex gap-8 overflow-hidden transition duration-300 ${styles[current]}`}
+        className={`flex gap-8 overflow-hidden transition duration-300 items-stretch`}
+        style={{
+          transform: slide(),
+          width: `calc(var(--slide-move) * ${slides.length})`,
+        }}
       >
         {slides.map((s) => {
           return (
             <RadixTabs.Content
               key={s.id}
               value={s.id}
-              className="w-96"
+              className={`${styles.slide}`}
               forceMount
             >
               {s.content}

@@ -14,45 +14,47 @@ import Image from '@/components/Image';
  * @param { TabsSectionProps }
  */
 const CarouselSection = ({ slice }) => {
-  const slides = slice.items.map((t) => {
-    return {
-      title: t.title,
-      content: (
-        <div className="bg-white px-4 py-3 flex gap-4 items-stretch">
-          {t.image && (
-            <div className="w-1/2 h-60 relative">
-              <Image
-                src={t.image.url}
-                alt={t.image.alt || ''}
-                fill
-                style={{ objectFit: 'contain' }}
+  const slides = slice.items
+    .map((t) => {
+      return {
+        title: t.title,
+        content: (
+          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full">
+            {t.image && (
+              <div className="lg:w-1/2 w-full lg:h-72 md:h-60 h-48 relative">
+                <Image
+                  src={t.image.url}
+                  alt={t.image.alt || ''}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            )}
+            <div className="lg:w-1/2 w-full flex flex-col gap-4 py-4 justify-between">
+              <div>
+                <Text tag="h3" variant="h3" classes="mb-2">
+                  {t.title}
+                </Text>
+                <RichText
+                  component="paragraph"
+                  variant="p"
+                  tag="p"
+                  field={t.description}
+                />
+              </div>
+              <Button
+                shape="compact"
+                variant="main_reversed"
+                label={t.cta_text}
+                link={{ href: t.cta_link }}
+                icon={{ name: ['fas', 'arrow-right'], position: 'after' }}
               />
             </div>
-          )}
-          <div className="w-1/2 flex flex-col gap-4 py-4 justify-between">
-            <div>
-              <Text tag="h3" variant="h3" classes="mb-2">
-                {t.title}
-              </Text>
-              <RichText
-                component="paragraph"
-                variant="p"
-                tag="p"
-                field={t.description}
-              />
-            </div>
-            <Button
-              shape="compact"
-              variant="main_reversed"
-              label={t.cta_text}
-              link={{ href: t.cta_link }}
-              icon={{ name: ['fas', 'arrow-right'], position: 'after' }}
-            />
           </div>
-        </div>
-      ),
-    };
-  });
+        ),
+      };
+    })
+    .flatMap((i) => [i, i]);
 
   return (
     <Section classes="bg-main-200">
