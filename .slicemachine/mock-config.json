@@ -1,8 +1,8 @@
 {
   "_cts": {
     "pagina_inicial": {},
-    "home": {},
-    "menu": {}
+    "menu": {},
+    "livro": {}
   },
   "slices": {
     "PaginaInicial": {

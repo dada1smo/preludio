@@ -1,0 +1,49 @@
+{
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "enemy",
+    "type": "Text"
+  },
+  "image": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+      "width": 3344,
+      "height": 2509
+    },
+    "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+    "width": 3344,
+    "height": 2509,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Elit nostrud incididunt magna ea deserunt ex mollit Lorem occaecat reprehenderit nostrud. Nostrud non eu laborum id tempor velit."
+        }
+      }
+    ]
+  },
+  "cta_text": {
+    "__TYPE__": "FieldContent",
+    "value": "shoot",
+    "type": "Text"
+  },
+  "cta_link": {
+    "__TYPE__": "FieldContent",
+    "value": "new",
+    "type": "Text"
+  }
+}

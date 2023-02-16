@@ -11,7 +11,6 @@ import Text from '@/components/Text';
  * @param { LogoSectionProps }
  */
 const LogoSection = ({ slice }) => {
-  console.log(slice);
   return (
     <Section classes="bg-white">
       <Grid>

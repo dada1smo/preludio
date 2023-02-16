@@ -6,6 +6,74 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for livro documents */
+interface LivroDocumentData {
+    /**
+     * Título field in *livro*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: livro.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Imagem field in *livro*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: livro.image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+    /**
+     * Descrição field in *livro*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: livro.description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * CTA Texto field in *livro*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: livro.cta_text
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *livro*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: livro.cta_link
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_link: prismicT.KeyTextField;
+}
+/**
+ * livro document from Prismic
+ *
+ * - **API ID**: `livro`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LivroDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<LivroDocumentData>, "livro", Lang>;
 /** Content for menu documents */
 interface MenuDocumentData {
     /**
@@ -75,7 +143,7 @@ type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsS
  * @typeParam Lang - Language API ID of the document.
  */
 export type PaginaInicialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PaginaInicialDocumentData>, "pagina_inicial", Lang>;
-export type AllDocumentTypes = MenuDocument | PaginaInicialDocument;
+export type AllDocumentTypes = LivroDocument | MenuDocument | PaginaInicialDocument;
 /**
  * Primary content in CarouselSection → Primary
  *
@@ -111,62 +179,16 @@ interface TabsSectionSliceDefaultPrimary {
      *
      */
     description: prismicT.RichTextField;
-}
-/**
- * Item in CarouselSection → Items
- *
- */
-export interface TabsSectionSliceDefaultItem {
     /**
-     * Título field in *CarouselSection → Items*
+     * Tipo de documento field in *CarouselSection → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.items[].title
+     * - **API ID Path**: tabs_section.primary.document_type
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    title: prismicT.KeyTextField;
-    /**
-     * Descrição field in *CarouselSection → Items*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.items[].description
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    description: prismicT.RichTextField;
-    /**
-     * Imagem field in *CarouselSection → Items*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.items[].image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
-    /**
-     * CTA Texto field in *CarouselSection → Items*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.items[].cta_text
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    cta_text: prismicT.KeyTextField;
-    /**
-     * CTA Link field in *CarouselSection → Items*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.items[].cta_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    cta_link: prismicT.KeyTextField;
+    document_type: prismicT.KeyTextField;
 }
 /**
  * Default variation for CarouselSection Slice
@@ -176,7 +198,7 @@ export interface TabsSectionSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TabsSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TabsSectionSliceDefaultPrimary>, Simplify<TabsSectionSliceDefaultItem>>;
+export type TabsSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TabsSectionSliceDefaultPrimary>, never>;
 /**
  * Slice variation for *CarouselSection*
  *
@@ -551,6 +573,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, TabsSectionSliceDefaultPrimary, TabsSectionSliceDefaultItem, TabsSectionSliceDefault, TabsSectionSliceVariation, TabsSectionSlice, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { LivroDocumentData, LivroDocument, MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, TabsSectionSliceDefaultPrimary, TabsSectionSliceDefault, TabsSectionSliceVariation, TabsSectionSlice, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
     }
 }
