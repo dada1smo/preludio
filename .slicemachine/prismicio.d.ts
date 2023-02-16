@@ -189,6 +189,16 @@ interface TabsSectionSliceDefaultPrimary {
      *
      */
     document_type: prismicT.KeyTextField;
+    /**
+     * Quantidade field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.amount
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    amount: prismicT.KeyTextField;
 }
 /**
  * Default variation for CarouselSection Slice

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { PrismicRichText } from '@prismicio/react';
 import Section from '@/components/Section';
 import Grid from '@/components/Grid';
 import RichText from '@/components/RichText';
@@ -15,6 +14,7 @@ import { createClient } from '@/prismicio';
  * @param { TabsSectionProps }
  */
 const CarouselSection = ({ slice }) => {
+  const amount = slice.primary.amount ? parseInt(slice.primary.amount) : 4;
   const [books, setBooks] = useState([]);
 
   const getLastBooks = useCallback(async (type) => {
@@ -38,45 +38,47 @@ const CarouselSection = ({ slice }) => {
     }
   }, [getLastBooks, slice.primary.document_type]);
 
-  const slides = books.map((t) => {
-    return {
-      title: t.title,
-      content: (
-        <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full">
-          {t.image && (
-            <div className="lg:w-1/2 w-full lg:h-72 md:h-60 h-48 relative">
-              <Image
-                src={t.image.url}
-                alt={t.image.alt || ''}
-                fill
-                style={{ objectFit: 'contain' }}
+  const slides = books
+    .filter((s, index) => index + 1 <= amount)
+    .map((t) => {
+      return {
+        title: t.title,
+        content: (
+          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full">
+            {t.image && (
+              <div className="lg:w-1/2 w-full lg:h-72 md:h-60 h-48 relative">
+                <Image
+                  src={t.image.url}
+                  alt={t.image.alt || ''}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            )}
+            <div className="lg:w-1/2 w-full lg:h-auto md:h-full h-1/2 flex flex-col gap-4 py-4 justify-between items-end">
+              <div className="w-full">
+                <Text tag="h3" variant="h3" classes="mb-2">
+                  {t.title}
+                </Text>
+                <RichText
+                  component="paragraph"
+                  variant="p"
+                  tag="p"
+                  field={t.description}
+                />
+              </div>
+              <Button
+                shape="compact"
+                variant="main_reversed"
+                label={t.cta_text}
+                link={{ href: t.cta_link }}
+                icon={{ name: ['fas', 'arrow-right'], position: 'after' }}
               />
             </div>
-          )}
-          <div className="lg:w-1/2 w-full flex flex-col gap-4 py-4 justify-between">
-            <div>
-              <Text tag="h3" variant="h3" classes="mb-2">
-                {t.title}
-              </Text>
-              <RichText
-                component="paragraph"
-                variant="p"
-                tag="p"
-                field={t.description}
-              />
-            </div>
-            <Button
-              shape="compact"
-              variant="main_reversed"
-              label={t.cta_text}
-              link={{ href: t.cta_link }}
-              icon={{ name: ['fas', 'arrow-right'], position: 'after' }}
-            />
           </div>
-        </div>
-      ),
-    };
-  });
+        ),
+      };
+    });
 
   return (
     <Section classes="bg-main-200">

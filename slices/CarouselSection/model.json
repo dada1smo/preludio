@@ -40,6 +40,13 @@
             "label": "Tipo de documento",
             "placeholder": ""
           }
+        },
+        "amount": {
+          "type": "Text",
+          "config": {
+            "label": "Quantidade",
+            "placeholder": ""
+          }
         }
       },
       "items": {},

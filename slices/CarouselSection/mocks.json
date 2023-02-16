@@ -28,6 +28,11 @@
         "__TYPE__": "FieldContent",
         "value": "differ",
         "type": "Text"
+      },
+      "amount": {
+        "__TYPE__": "FieldContent",
+        "value": "tiny",
+        "type": "Text"
       }
     },
     "items": [

@@ -15,14 +15,14 @@
 @media (max-width: 768px) {
   .root {
     --slide-width: 14rem;
-    --slide-start: 12rem;
+    --slide-start: 0rem;
   }
 }
 
 @media (max-width: 640px) {
   .root {
     --slide-width: 12rem;
-    --slide-start: 8rem;
+    --slide-start: 0rem;
   }
 }
 
