@@ -47,6 +47,20 @@
             "label": "Quantidade",
             "placeholder": ""
           }
+        },
+        "cta_text": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Texto",
+            "placeholder": ""
+          }
+        },
+        "cta_link": {
+          "type": "Text",
+          "config": {
+            "label": "CTA Link",
+            "placeholder": ""
+          }
         }
       },
       "items": {},

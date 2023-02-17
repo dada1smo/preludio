@@ -9,6 +9,7 @@ interface ImageProps {
   priority?: boolean;
   fill?: boolean;
   style?: object;
+  unoptimized?: boolean;
 }
 
 const Image: FunctionComponent<ImageProps> = ({
@@ -19,6 +20,7 @@ const Image: FunctionComponent<ImageProps> = ({
   priority,
   fill,
   style,
+  unoptimized,
 }) => {
   return (
     <NextImage
@@ -29,6 +31,7 @@ const Image: FunctionComponent<ImageProps> = ({
       priority={priority}
       fill={fill}
       style={style}
+      unoptimized={unoptimized}
     />
   );
 };

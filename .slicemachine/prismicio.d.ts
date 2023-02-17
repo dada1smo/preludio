@@ -199,6 +199,26 @@ interface TabsSectionSliceDefaultPrimary {
      *
      */
     amount: prismicT.KeyTextField;
+    /**
+     * CTA Texto field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.cta_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *CarouselSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_link: prismicT.KeyTextField;
 }
 /**
  * Default variation for CarouselSection Slice

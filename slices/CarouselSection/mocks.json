@@ -33,6 +33,16 @@
         "__TYPE__": "FieldContent",
         "value": "tiny",
         "type": "Text"
+      },
+      "cta_text": {
+        "__TYPE__": "FieldContent",
+        "value": "dried",
+        "type": "Text"
+      },
+      "cta_link": {
+        "__TYPE__": "FieldContent",
+        "value": "doll",
+        "type": "Text"
       }
     },
     "items": [

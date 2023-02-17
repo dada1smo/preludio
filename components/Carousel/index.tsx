@@ -95,7 +95,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ items, title }) => {
         </RadixTabs.List>
       </div>
       <div
-        className={`flex gap-8 overflow-hidden transition duration-300 items-stretch`}
+        className={`flex gap-8 overflow-hidden transition duration-300 items-stretch pb-8 px-8`}
         style={{
           transform: slide(),
           width: `calc(var(--slide-move) * ${slides.length})`,

@@ -44,7 +44,7 @@ const CarouselSection = ({ slice }) => {
       return {
         title: t.title,
         content: (
-          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full">
+          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full rounded-md shadow-lg shadow-main-400/30">
             {t.image && (
               <div className="lg:w-1/2 w-full lg:h-72 md:h-60 h-48 relative">
                 <Image
@@ -95,6 +95,13 @@ const CarouselSection = ({ slice }) => {
               }}
             />
           )}
+          <div className="flex justify-center mt-8">
+            <Button
+              label={slice.primary.cta_text || ''}
+              link={{ href: slice.primary.cta_link || '' }}
+              variant="alt"
+            />
+          </div>
         </div>
       </Grid>
     </Section>
