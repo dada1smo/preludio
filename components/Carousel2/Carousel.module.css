@@ -1,0 +1,33 @@
+.root_4_cols {
+  --slide-width: 25vw;
+  --slide-gap: 4rem;
+  --slide-move: calc(var(--slide-width) + var(--slide-gap));
+}
+
+.root_3_cols {
+  --slide-width: 33.33vw;
+  --slide-gap: 4rem;
+  --slide-move: calc(var(--slide-width) + var(--slide-gap));
+}
+
+@media (max-width: 1008px) {
+  .root {
+    --slide-width: 30vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    --slide-width: 50vw;
+  }
+}
+
+@media (max-width: 640px) {
+  .root {
+    --slide-width: 50vw;
+  }
+}
+
+.slide {
+  width: var(--slide-width);
+}

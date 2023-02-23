@@ -2,7 +2,8 @@
   "_cts": {
     "pagina_inicial": {},
     "menu": {},
-    "livro": {}
+    "livro": {},
+    "plano": {}
   },
   "slices": {
     "PaginaInicial": {
@@ -47,6 +48,17 @@
       }
     },
     "CarouselSection": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "ServiceSection": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "FeatureList": {
       "default": {
         "primary": {},
         "items": {}

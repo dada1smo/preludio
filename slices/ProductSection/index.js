@@ -3,7 +3,7 @@ import Section from '@/components/Section';
 import Grid from '@/components/Grid';
 import RichText from '@/components/RichText';
 import Button from '@/components/Button';
-import Carousel from '@/components/Carousel';
+import Carousel from '@/components/Carousel2';
 import Text from '@/components/Text';
 import Image from '@/components/Image';
 import { createClient } from '@/prismicio';
@@ -44,7 +44,7 @@ const CarouselSection = ({ slice }) => {
       return {
         title: t.title,
         content: (
-          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full rounded-md shadow-lg shadow-main-400/30">
+          <div className="bg-white px-4 py-3 flex gap-4 items-stretch justify-stretch md:flex-row flex-col h-full rounded-md">
             {t.image && (
               <div className="lg:w-1/2 w-full lg:h-72 md:h-60 h-48 relative">
                 <Image
@@ -81,12 +81,17 @@ const CarouselSection = ({ slice }) => {
     });
 
   return (
-    <Section classes="bg-main-200">
+    <Section classes="bg-main-100">
       <Grid>
         <div className="col-start-1 col-span-full">
           {books.length > 0 && (
             <Carousel
               items={slides}
+              cols={3}
+              fade={{
+                left: 'from-main-100 via-main-100 to-transparent',
+                right: 'from-main-100 via-main-100 to-transparent',
+              }}
               title={{
                 tag: 'h2',
                 variant: 'h6',

@@ -35,34 +35,36 @@ const FeaturesSections = ({ slice }) => {
                 key={title}
                 className={`col-start-auto ${colSpan} flex flex-col items-start justify-start gap-8`}
               >
-                {image && (
-                  <div className="flex justify-start w-full">
-                    <div>
-                      <Image
-                        src={image.url}
-                        alt={image.alt || ''}
-                        width={120}
-                        height={120}
-                      />
+                <div className="bg-main-100 p-8 flex flex-col rounded-md items-start justify-start gap-8">
+                  {image && (
+                    <div className="flex justify-start w-full">
+                      <div>
+                        <Image
+                          src={image.url}
+                          alt={image.alt || ''}
+                          width={120}
+                          height={120}
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
-                <div>
-                  <Text tag="h3" variant="h3" classes="mb-3">
-                    {title || 'Título'}
-                  </Text>
-                  {description ? (
-                    <RichText
-                      component="paragraph"
-                      variant="p"
-                      tag="p"
-                      field={description}
-                    />
-                  ) : (
-                    <Text tag="p" variant="p">
-                      Descrição
-                    </Text>
                   )}
+                  <div>
+                    <Text tag="h3" variant="h3" classes="mb-3">
+                      {title || 'Título'}
+                    </Text>
+                    {description ? (
+                      <RichText
+                        component="paragraph"
+                        variant="p"
+                        tag="p"
+                        field={description}
+                      />
+                    ) : (
+                      <Text tag="p" variant="p">
+                        Descrição
+                      </Text>
+                    )}
+                  </div>
                 </div>
               </div>
             );

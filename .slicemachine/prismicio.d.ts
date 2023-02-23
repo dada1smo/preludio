@@ -143,106 +143,96 @@ type PaginaInicialDocumentDataSlicesSlice = HeroSectionSlice | FeaturesSectionsS
  * @typeParam Lang - Language API ID of the document.
  */
 export type PaginaInicialDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PaginaInicialDocumentData>, "pagina_inicial", Lang>;
-export type AllDocumentTypes = LivroDocument | MenuDocument | PaginaInicialDocument;
-/**
- * Primary content in CarouselSection → Primary
- *
- */
-interface TabsSectionSliceDefaultPrimary {
+/** Content for plano documents */
+interface PlanoDocumentData {
     /**
-     * Surtítulo field in *CarouselSection → Primary*
+     * Título field in *plano*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.surtitle
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    surtitle: prismicT.KeyTextField;
-    /**
-     * Título field in *CarouselSection → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.title
+     * - **API ID Path**: plano.title
+     * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
     title: prismicT.KeyTextField;
     /**
-     * Descrição field in *CarouselSection → Primary*
+     * Slice Zone field in *plano*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: plano.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<PlanoDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *plano → Slice Zone*
+ *
+ */
+type PlanoDocumentDataSlicesSlice = FeatureListSlice;
+/**
+ * plano document from Prismic
+ *
+ * - **API ID**: `plano`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PlanoDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<PlanoDocumentData>, "plano", Lang>;
+export type AllDocumentTypes = LivroDocument | MenuDocument | PaginaInicialDocument | PlanoDocument;
+/**
+ * Item in FeatureList → Items
+ *
+ */
+export interface FeatureListSliceDefaultItem {
+    /**
+     * Tipo field in *FeatureList → Items*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: feature_list.items[].type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Positivo" | "Negativo">;
+    /**
+     * Texto field in *FeatureList → Items*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.description
+     * - **API ID Path**: feature_list.items[].text
      * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
      *
      */
-    description: prismicT.RichTextField;
-    /**
-     * Tipo de documento field in *CarouselSection → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.document_type
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    document_type: prismicT.KeyTextField;
-    /**
-     * Quantidade field in *CarouselSection → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.amount
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    amount: prismicT.KeyTextField;
-    /**
-     * CTA Texto field in *CarouselSection → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.cta_text
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    cta_text: prismicT.KeyTextField;
-    /**
-     * CTA Link field in *CarouselSection → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tabs_section.primary.cta_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    cta_link: prismicT.KeyTextField;
+    text: prismicT.RichTextField;
 }
 /**
- * Default variation for CarouselSection Slice
+ * Default variation for FeatureList Slice
  *
  * - **API ID**: `default`
- * - **Description**: `TabsSection`
+ * - **Description**: `FeatureList`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TabsSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TabsSectionSliceDefaultPrimary>, never>;
+export type FeatureListSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<FeatureListSliceDefaultItem>>;
 /**
- * Slice variation for *CarouselSection*
+ * Slice variation for *FeatureList*
  *
  */
-type TabsSectionSliceVariation = TabsSectionSliceDefault;
+type FeatureListSliceVariation = FeatureListSliceDefault;
 /**
- * CarouselSection Shared Slice
+ * FeatureList Shared Slice
  *
- * - **API ID**: `tabs_section`
- * - **Description**: `TabsSection`
+ * - **API ID**: `feature_list`
+ * - **Description**: `FeatureList`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TabsSectionSlice = prismicT.SharedSlice<"tabs_section", TabsSectionSliceVariation>;
+export type FeatureListSlice = prismicT.SharedSlice<"feature_list", FeatureListSliceVariation>;
 /**
  * Primary content in FeatureSection → Primary
  *
@@ -598,11 +588,169 @@ type MenuNavigationSliceVariation = MenuNavigationSliceDefault;
  *
  */
 export type MenuNavigationSlice = prismicT.SharedSlice<"menu_navigation", MenuNavigationSliceVariation>;
+/**
+ * Primary content in ProductSection → Primary
+ *
+ */
+interface TabsSectionSliceDefaultPrimary {
+    /**
+     * Surtítulo field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.surtitle
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    surtitle: prismicT.KeyTextField;
+    /**
+     * Título field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Tipo de documento field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.document_type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    document_type: prismicT.KeyTextField;
+    /**
+     * Quantidade field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.amount
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    amount: prismicT.KeyTextField;
+    /**
+     * CTA Texto field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.cta_text
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_text: prismicT.KeyTextField;
+    /**
+     * CTA Link field in *ProductSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tabs_section.primary.cta_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    cta_link: prismicT.KeyTextField;
+}
+/**
+ * Default variation for ProductSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TabsSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TabsSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TabsSectionSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *ProductSection*
+ *
+ */
+type TabsSectionSliceVariation = TabsSectionSliceDefault;
+/**
+ * ProductSection Shared Slice
+ *
+ * - **API ID**: `tabs_section`
+ * - **Description**: `TabsSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TabsSectionSlice = prismicT.SharedSlice<"tabs_section", TabsSectionSliceVariation>;
+/**
+ * Primary content in ServiceSection → Primary
+ *
+ */
+interface ServiceSectionSliceDefaultPrimary {
+    /**
+     * Título field in *ServiceSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_section.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Descrição field in *ServiceSection → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_section.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+    /**
+     * Quantidade field in *ServiceSection → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: service_section.primary.amount
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    amount: prismicT.KeyTextField;
+}
+/**
+ * Default variation for ServiceSection Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ServiceSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ServiceSectionSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ServiceSectionSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *ServiceSection*
+ *
+ */
+type ServiceSectionSliceVariation = ServiceSectionSliceDefault;
+/**
+ * ServiceSection Shared Slice
+ *
+ * - **API ID**: `service_section`
+ * - **Description**: `ServiceSection`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ServiceSectionSlice = prismicT.SharedSlice<"service_section", ServiceSectionSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { LivroDocumentData, LivroDocument, MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, AllDocumentTypes, TabsSectionSliceDefaultPrimary, TabsSectionSliceDefault, TabsSectionSliceVariation, TabsSectionSlice, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice };
+        export type { LivroDocumentData, LivroDocument, MenuDocumentData, MenuDocumentDataSlicesSlice, MenuDocument, PaginaInicialDocumentData, PaginaInicialDocumentDataSlicesSlice, PaginaInicialDocument, PlanoDocumentData, PlanoDocumentDataSlicesSlice, PlanoDocument, AllDocumentTypes, FeatureListSliceDefaultItem, FeatureListSliceDefault, FeatureListSliceVariation, FeatureListSlice, FeaturesSectionsSliceDefaultPrimary, FeaturesSectionsSliceDefaultItem, FeaturesSectionsSliceDefault, FeaturesSectionsSlice4ColsItem, FeaturesSectionsSlice4Cols, FeaturesSectionsSliceVariation, FeaturesSectionsSlice, HeroSectionSliceDefaultPrimary, HeroSectionSliceDefaultItem, HeroSectionSliceDefault, HeroSectionSliceVariation, HeroSectionSlice, LogoSectionSliceDefaultPrimary, LogoSectionSliceDefaultItem, LogoSectionSliceDefault, LogoSectionSliceVariation, LogoSectionSlice, MenuNavigationSliceDefaultPrimary, MenuNavigationSliceDefaultItem, MenuNavigationSliceDefault, MenuNavigationSliceVariation, MenuNavigationSlice, TabsSectionSliceDefaultPrimary, TabsSectionSliceDefault, TabsSectionSliceVariation, TabsSectionSlice, ServiceSectionSliceDefaultPrimary, ServiceSectionSliceDefault, ServiceSectionSliceVariation, ServiceSectionSlice };
     }
 }

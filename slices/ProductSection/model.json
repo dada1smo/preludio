@@ -1,7 +1,7 @@
 {
   "id": "tabs_section",
   "type": "SharedSlice",
-  "name": "CarouselSection",
+  "name": "ProductSection",
   "description": "TabsSection",
   "variations": [
     {
